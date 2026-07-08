@@ -136,16 +136,12 @@ const steps = [
         <div
           class="rounded-2xl bg-white text-ink-800 p-6 sm:p-8 shadow-2xl shadow-black/40"
         >
-          <h2 class="font-display text-2xl font-bold">Request an Estimate</h2>
+          <h2 class="font-display text-2xl font-bold">Text Us Your Details</h2>
           <p class="text-ink-500 text-sm mt-1">
-            Tell us about your roofing project and we'll be in touch.
+            Fill this out and tap send — it opens a ready-to-go text message to
+            us. Fast and easy.
           </p>
-          <form
-            class="mt-5 space-y-3"
-            action={site.formEndpoint}
-            method="POST"
-          >
-            <input type="hidden" name="_subject" value="New estimate request" />
+          <form class="mt-5 space-y-3" data-sms-to={site.sms}>
             <div class="grid sm:grid-cols-2 gap-3">
               <input
                 name="name"
@@ -161,12 +157,6 @@ const steps = [
                 class="w-full rounded-lg border border-ink-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
               />
             </div>
-            <input
-              name="email"
-              type="email"
-              placeholder="Email"
-              class="w-full rounded-lg border border-ink-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
-            />
             <select
               name="service"
               class="w-full rounded-lg border border-ink-200 px-3.5 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500"
@@ -181,10 +171,11 @@ const steps = [
               class="w-full rounded-lg border border-ink-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
             ></textarea>
             <button type="submit" class="btn btn-primary w-full">
-              Send Request
+              <Icon name="mail" class="w-5 h-5" /> Send Text Message
             </button>
             <p class="text-[0.7rem] text-ink-400 text-center">
-              Prefer to talk now? Call {site.phone}.
+              Opens your texting app with a message ready to send. Prefer to call?
+              {site.phone}.
             </p>
           </form>
         </div>

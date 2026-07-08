@@ -45,11 +45,13 @@ npm run preview    # preview the production build
 
 ## Configuration — before going live
 
-1. **Contact form destination (important):** the forms currently POST to a
-   placeholder. In `src/data/site.ts`, set `formEndpoint` to
-   `https://formsubmit.co/<your-email>` (or any form provider) so submissions are
-   delivered. The first FormSubmit submission triggers a one-time email
-   confirmation. Optionally set `email` to display a public email address.
+1. **Contact forms send an SMS (no email):** when a visitor fills out a form
+   and taps **Send Text Message**, their device opens its messaging app with a
+   pre-filled text (name, phone, service, address, details) addressed to the
+   business number. To change the destination number, update `sms` / `smsHref`
+   (and `phone` / `phoneHref`) in `src/data/site.ts`. Note: click-to-text works
+   on devices with SMS capability (phones/tablets); the "Call" and "Text Us"
+   buttons are available everywhere as a fallback.
 2. **Domain:** the site is configured for `https://dependable-roofing-pros.vercel.app`.
    If you connect a custom domain, update it in `astro.config.mjs` (`site`),
    `src/data/site.ts` (`url`), and `public/robots.txt`.

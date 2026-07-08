@@ -27,11 +27,11 @@ const {
       <p class="mt-3 text-brand-50/90 text-lg max-w-2xl">{subtitle}</p>
     </div>
     <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-      <a href={site.phoneHref} class="btn bg-white text-brand-700 hover:bg-brand-50">
-        <Icon name="phone" class="w-5 h-5" /> {site.phone}
+      <a href={site.smsHref} class="btn bg-white text-brand-700 hover:bg-brand-50">
+        <Icon name="mail" class="w-5 h-5" /> Text Us
       </a>
-      <a href="/contact" class="btn btn-dark">
-        Request an Estimate <Icon name="arrow" class="w-5 h-5" />
+      <a href={site.phoneHref} class="btn btn-dark">
+        <Icon name="phone" class="w-5 h-5" /> {site.phone}
       </a>
     </div>
   </div>

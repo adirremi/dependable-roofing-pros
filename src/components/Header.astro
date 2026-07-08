@@ -30,6 +30,13 @@ const isActive = (href: string) =>
       </p>
       <div class="flex items-center gap-5">
         <a
+          href={site.smsHref}
+          class="hidden sm:flex items-center gap-2 font-semibold text-white hover:text-brand-300"
+        >
+          <Icon name="mail" class="w-4 h-4 text-brand-400" />
+          Text Us
+        </a>
+        <a
           href={site.phoneHref}
           class="flex items-center gap-2 font-semibold text-white hover:text-brand-300"
         >
@@ -116,7 +123,10 @@ const isActive = (href: string) =>
           </a>
         ))
       }
-      <a href={site.phoneHref} class="btn btn-primary mt-4">
+      <a href={site.smsHref} class="btn btn-primary mt-4">
+        <Icon name="mail" class="w-4 h-4" /> Text Us
+      </a>
+      <a href={site.phoneHref} class="btn btn-dark mt-2">
         <Icon name="phone" class="w-4 h-4" /> Call {site.phone}
       </a>
     </nav>

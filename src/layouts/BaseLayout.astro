@@ -126,5 +126,41 @@ const schemas = [businessSchema, websiteSchema, ...jsonLd];
       <slot />
     </main>
     <Footer />
+
+    <script>
+      // Turn any <form data-sms-to="+1..."> into a click-to-text: on submit we
+      // build a pre-filled SMS to the business number instead of emailing.
+      function buildBody(form: HTMLFormElement) {
+        const get = (n: string) =>
+          (form.querySelector(`[name="${n}"]`) as HTMLInputElement | null)?.value?.trim() ?? "";
+        const lines = ["New roofing request from your website:"];
+        const name = get("name");
+        const phone = get("phone");
+        const service = get("service");
+        const address = get("address");
+        const message = get("message");
+        if (name) lines.push(`Name: ${name}`);
+        if (phone) lines.push(`Phone: ${phone}`);
+        if (service) lines.push(`Service: ${service}`);
+        if (address) lines.push(`Address: ${address}`);
+        if (message) lines.push(`Details: ${message}`);
+        return lines.join("\n");
+      }
+
+      document.querySelectorAll<HTMLFormElement>("form[data-sms-to]").forEach((form) => {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+          const to = form.getAttribute("data-sms-to") || "";
+          const ua = navigator.userAgent || "";
+          const isIOS =
+            /iP(hone|ad|od)/.test(ua) ||
+            (navigator.platform === "MacIntel" && (navigator as any).maxTouchPoints > 1);
+          const sep = isIOS ? "&" : "?";
+          const url = `sms:${to}${sep}body=${encodeURIComponent(buildBody(form))}`;
+          window.location.href = url;
+        });
+      });
+    </script>
   </body>
 </html>

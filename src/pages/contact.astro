@@ -10,9 +10,7 @@ const description = `Contact Dependable Roofing Pros in Coral Springs, FL. Call 
 
 const contactPoints = [
   { icon: "phone", label: "Call Us", value: site.phone, href: site.phoneHref },
-  ...(site.email
-    ? [{ icon: "mail", label: "Email Us", value: site.email, href: `mailto:${site.email}` }]
-    : []),
+  { icon: "mail", label: "Text Us", value: site.phone, href: site.smsHref },
   {
     icon: "pin",
     label: "Visit Us",
@@ -67,12 +65,17 @@ const contactPoints = [
           </h3>
           <p class="mt-3 text-ink-300 text-sm">
             Based in Coral Springs, we serve homeowners and businesses across the
-            surrounding South Florida communities. Give us a call and we'll be
-            glad to help.
+            surrounding South Florida communities. Text or call and we'll be glad
+            to help.
           </p>
-          <a href={site.phoneHref} class="btn btn-primary mt-5">
-            <Icon name="phone" class="w-5 h-5" /> {site.phone}
-          </a>
+          <div class="flex flex-col sm:flex-row gap-3 mt-5">
+            <a href={site.smsHref} class="btn btn-primary flex-1">
+              <Icon name="mail" class="w-5 h-5" /> Text Us
+            </a>
+            <a href={site.phoneHref} class="btn btn-ghost flex-1">
+              <Icon name="phone" class="w-5 h-5" /> Call
+            </a>
+          </div>
         </div>
       </div>
 
@@ -80,18 +83,13 @@ const contactPoints = [
       <div class="lg:col-span-3">
         <div class="rounded-2xl border border-ink-100 shadow-lg p-7 sm:p-9">
           <h2 class="font-display text-2xl font-extrabold text-ink-900">
-            Request an Estimate
+            Text Us Your Details
           </h2>
           <p class="mt-2 text-ink-500">
-            Tell us a little about your project and we'll be in touch.
+            Fill this out and tap send — it opens a ready-to-go text message to us
+            with your details. No email needed.
           </p>
-          <form
-            class="mt-6 space-y-4"
-            action={site.formEndpoint}
-            method="POST"
-          >
-            <input type="hidden" name="_subject" value="New estimate request from website" />
-            <input type="hidden" name="_template" value="table" />
+          <form class="mt-6 space-y-4" data-sms-to={site.sms}>
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-semibold text-ink-700 mb-1.5" for="name">
@@ -117,32 +115,19 @@ const contactPoints = [
                 />
               </div>
             </div>
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-semibold text-ink-700 mb-1.5" for="email">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  class="w-full rounded-lg border border-ink-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-semibold text-ink-700 mb-1.5" for="service">
-                  Service needed
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  class="w-full rounded-lg border border-ink-200 px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500"
-                >
-                  <option value="">Select…</option>
-                  {services.map((s) => <option value={s.title}>{s.title}</option>)}
-                  <option value="Other">Other / Not sure</option>
-                </select>
-              </div>
+            <div>
+              <label class="block text-sm font-semibold text-ink-700 mb-1.5" for="service">
+                Service needed
+              </label>
+              <select
+                id="service"
+                name="service"
+                class="w-full rounded-lg border border-ink-200 px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500"
+              >
+                <option value="">Select…</option>
+                {services.map((s) => <option value={s.title}>{s.title}</option>)}
+                <option value="Other">Other / Not sure</option>
+              </select>
             </div>
             <div>
               <label class="block text-sm font-semibold text-ink-700 mb-1.5" for="address">
@@ -166,10 +151,11 @@ const contactPoints = [
               ></textarea>
             </div>
             <button type="submit" class="btn btn-primary w-full text-base">
-              Send Request <Icon name="arrow" class="w-5 h-5" />
+              <Icon name="mail" class="w-5 h-5" /> Send Text Message
             </button>
             <p class="text-xs text-ink-400 text-center">
-              Prefer to talk now? Call {site.phone}.
+              This opens your messaging app with the text pre-filled. Prefer to
+              call? {site.phone}.
             </p>
           </form>
         </div>

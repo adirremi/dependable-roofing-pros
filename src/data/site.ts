@@ -14,12 +14,11 @@ export const site = {
   phone: "(754) 291-7865",
   phoneHref: "tel:+17542917865",
 
-  // No public email was provided. Set your inbox below to receive form
-  // submissions, then this will be shown and wired to the contact forms.
-  email: "",
-  // Where the contact forms POST. Replace REPLACE_WITH_YOUR_EMAIL with the
-  // email address that should receive leads (uses https://formsubmit.co).
-  formEndpoint: "https://formsubmit.co/REPLACE_WITH_YOUR_EMAIL",
+  // Business number in E.164 format — used for click-to-text (SMS) links and
+  // the website contact forms, which open a pre-filled text message to this
+  // number instead of sending email.
+  sms: "+17542917865",
+  smsHref: "sms:+17542917865",
 
   address: {
     street: "1953 N University Dr",
