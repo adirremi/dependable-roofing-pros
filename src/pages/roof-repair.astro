@@ -5,8 +5,8 @@ import CtaBand from "../components/CtaBand.astro";
 import Icon from "../components/Icon.astro";
 import { site } from "../data/site";
 
-const title = "Roof Repair & Leak Repair in Chattanooga, TN";
-const description = `Fast, reliable roof repair in Chattanooga & North Georgia. Leak detection, shingle & flashing repair, emergency tarping. Same-day service available — call ${site.phone}.`;
+const title = "Roof Repair & Leak Repair in Coral Springs, FL";
+const description = `Roof repair in Coral Springs & South Florida. Leak detection, shingle & flashing repair, storm damage and emergency tarping. Call ${site.phone}.`;
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -28,12 +28,12 @@ const repairs = [
 ];
 
 const why = [
-  "Same-day and emergency service available",
-  "Honest assessments — we won't upsell you a new roof if a repair will do",
-  "Skilled technicians with 18+ years of experience",
-  "Quality materials and lasting workmanship",
-  "Free repair estimates",
-  "Insurance claim assistance for storm damage",
+  "Prompt response for leaks and storm damage",
+  "Honest assessments — we won't push a new roof if a repair will do",
+  "Experienced roofing technicians",
+  "Quality materials and careful workmanship",
+  "Written repair estimates",
+  "Repairs for South Florida storm damage",
 ];
 ---
 
@@ -45,8 +45,8 @@ const why = [
 >
   <PageHero
     eyebrow="Roof Repair & Leak Repair"
-    title="Fast, Lasting Roof Repairs — Done Right"
-    subtitle="A small leak can turn into major damage fast. Our team finds the problem, fixes it properly, and protects your home — often the same day."
+    title="Roof Repairs, Done Right"
+    subtitle="A small leak can turn into major damage fast. Our team finds the problem, fixes it properly, and helps protect your property."
     crumbs={[
       { label: "Home", href: "/" },
       { label: "Services", href: "/services" },
@@ -58,18 +58,17 @@ const why = [
     <div class="container-x grid lg:grid-cols-3 gap-12">
       <div class="lg:col-span-2">
         <h2 class="font-display text-3xl font-extrabold text-ink-900">
-          Dependable Roof Repair in Chattanooga
+          Roof Repair in Coral Springs
         </h2>
         <p class="mt-4 text-ink-600 text-lg leading-relaxed">
           When your roof springs a leak or takes damage from a storm, you need a
-          team that responds quickly and fixes it right the first time. For over
-          {site.yearsExperience} years, Chattanooga homeowners and businesses have
-          relied on Dependable Roofing Pros for honest, high-quality roof repairs
-          that last.
+          team that responds and fixes it properly. Coral Springs homeowners and
+          businesses turn to Dependable Roofing Pros for honest, quality roof
+          repairs.
         </p>
         <p class="mt-4 text-ink-600 text-lg leading-relaxed">
-          We diagnose the real source of the problem — not just the symptom — and
-          use quality materials to make repairs that hold up. And if a repair
+          We work to find the real source of the problem — not just the symptom —
+          and use quality materials to make repairs that hold up. And if a repair
           isn't in your best interest, we'll tell you honestly.
         </p>
 
@@ -94,8 +93,8 @@ const why = [
             <Icon name="phone" class="w-10 h-10" />
             <h3 class="mt-4 font-display text-xl font-bold">Roof Leaking Now?</h3>
             <p class="mt-2 text-brand-50 text-sm">
-              Don't wait — water damage spreads fast. Call for fast, same-day
-              service.
+              Don't wait — water damage spreads fast. Give us a call and we'll
+              help.
             </p>
             <a
               href={site.phoneHref}
@@ -123,7 +122,7 @@ const why = [
   </section>
 
   <CtaBand
-    title="Stop That Leak for Good"
-    subtitle="Get a free repair estimate from Chattanooga's dependable roofing team."
+    title="Stop That Leak"
+    subtitle="Contact Dependable Roofing Pros for roof repair in Coral Springs and across South Florida."
   />
 </BaseLayout>

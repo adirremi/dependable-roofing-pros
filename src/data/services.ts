@@ -2,7 +2,7 @@ export type Service = {
   slug: string;
   title: string;
   short: string;
-  icon: string; // inline svg path key (see IconServices)
+  icon: string; // key used by Icon.astro
   href: string;
   blurb: string;
   points: string[];
@@ -16,87 +16,87 @@ export const services: Service[] = [
     icon: "home",
     href: "/roof-replacement",
     blurb:
-      "Complete tear-off and installation of durable, energy-efficient roofing systems built to protect your home for decades.",
+      "Complete roof replacement and new roof installation using durable roofing systems suited to South Florida homes and businesses.",
     points: [
-      "Architectural & 3-tab asphalt shingles",
+      "Asphalt shingle roofing",
       "Metal, tile & flat roofing systems",
       "Full tear-off and deck inspection",
-      "Manufacturer-backed warranties",
+      "New roof installation",
     ],
   },
   {
     slug: "roof-repair",
     title: "Roof Repair",
-    short: "Fast, lasting leak & damage repairs",
+    short: "Leak & storm damage repairs",
     icon: "wrench",
     href: "/roof-repair",
     blurb:
-      "Fast, reliable repairs for leaks, missing shingles, flashing failures and worn roofing accessories — done right the first time.",
+      "Repairs for leaks, missing shingles, flashing failures and worn roofing components to help protect your property.",
     points: [
-      "Leak detection & waterproofing",
+      "Leak detection & repair",
       "Shingle, flashing & vent repairs",
       "Chimney & skylight sealing",
-      "Emergency tarping available",
+      "Emergency tarping",
     ],
   },
   {
     slug: "storm-damage",
-    title: "Storm & Hail Damage",
-    short: "Insurance-friendly storm restoration",
+    title: "Storm & Hurricane Damage",
+    short: "Wind & storm damage repairs",
     icon: "storm",
     href: "/services#storm-damage",
     blurb:
-      "Wind, hail and storm damage restoration with free inspections and full support through your insurance claim.",
+      "South Florida weather is hard on roofs. We repair wind, leak and storm-related roof damage to help keep your property protected.",
     points: [
-      "Free storm damage inspections",
-      "Insurance claim assistance",
-      "Emergency response & tarping",
-      "Complete restoration",
+      "Wind & storm damage repair",
+      "Leak & water intrusion repair",
+      "Emergency tarping",
+      "Roof restoration",
     ],
   },
   {
     slug: "commercial-roofing",
     title: "Commercial Roofing",
-    short: "Flat & low-slope commercial systems",
+    short: "Flat & low-slope commercial roofs",
     icon: "building",
     href: "/services#commercial-roofing",
     blurb:
-      "Dependable flat and low-slope roofing solutions for businesses, keeping your property protected and operational.",
+      "Flat and low-slope roofing services for businesses, helping keep your property protected and operational.",
     points: [
       "TPO, EPDM & modified bitumen",
-      "Preventive maintenance programs",
-      "Minimal disruption scheduling",
-      "Commercial-grade warranties",
+      "Maintenance & repairs",
+      "Minimal-disruption scheduling",
+      "Commercial roof replacement",
     ],
   },
   {
     slug: "roof-inspection",
     title: "Roof Inspections",
-    short: "Detailed inspections & maintenance",
+    short: "Inspections & maintenance",
     icon: "search",
     href: "/services#roof-inspection",
     blurb:
-      "Thorough roof inspections and maintenance plans that catch small problems before they become costly repairs.",
+      "Roof inspections and maintenance to help you stay ahead of small problems before they grow into larger ones.",
     points: [
-      "Free, no-obligation inspections",
-      "Detailed written reports",
-      "Preventive maintenance plans",
+      "Roof condition assessments",
+      "Written inspection reports",
+      "Maintenance services",
       "Pre-sale & pre-purchase checks",
     ],
   },
   {
     slug: "gutters",
     title: "Gutters & More",
-    short: "Gutter install, siding & framing",
+    short: "Gutters, siding & carpentry",
     icon: "layers",
     href: "/services#gutters",
     blurb:
-      "Complete exterior services including seamless gutters, siding and framing to protect and finish your home.",
+      "Exterior services including gutters, siding and carpentry to help protect and finish your property.",
     points: [
-      "Seamless gutter installation",
+      "Gutter installation",
       "Gutter guards & cleaning",
       "Siding & fascia",
-      "Framing & carpentry",
+      "Carpentry & framing",
     ],
   },
 ];

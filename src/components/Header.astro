@@ -26,13 +26,9 @@ const isActive = (href: string) =>
     >
       <p class="hidden sm:flex items-center gap-2">
         <Icon name="pin" class="w-4 h-4 text-brand-400" />
-        {site.address.city}, {site.address.region} &amp; surrounding areas
+        {site.address.city}, {site.address.regionName} &amp; South Florida
       </p>
       <div class="flex items-center gap-5">
-        <span class="hidden md:flex items-center gap-2">
-          <Icon name="clock" class="w-4 h-4 text-brand-400" />
-          Mon–Fri 7am–6pm
-        </span>
         <a
           href={site.phoneHref}
           class="flex items-center gap-2 font-semibold text-white hover:text-brand-300"
@@ -83,7 +79,7 @@ const isActive = (href: string) =>
 
     <div class="flex items-center gap-3">
       <a href="/contact" class="btn btn-primary text-sm hidden sm:inline-flex">
-        Free Estimate
+        Request an Estimate
       </a>
       <button
         id="menu-toggle"

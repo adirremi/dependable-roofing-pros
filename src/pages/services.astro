@@ -6,8 +6,8 @@ import Icon from "../components/Icon.astro";
 import { site } from "../data/site";
 import { services } from "../data/services";
 
-const title = `Roofing Services in Chattanooga, TN`;
-const description = `Full-service roofing in Chattanooga & North Georgia: roof replacement, repair, storm damage restoration, commercial roofing, inspections & gutters. Free estimates — ${site.phone}.`;
+const title = `Roofing Services in Coral Springs, FL`;
+const description = `Full-service roofing in Coral Springs & South Florida: roof replacement, repair, storm & hurricane damage, commercial roofing, inspections & gutters. Call ${site.phone}.`;
 
 const serviceListSchema = {
   "@context": "https://schema.org",
@@ -30,7 +30,7 @@ const serviceListSchema = {
   <PageHero
     eyebrow="Full-Service Roofing Contractor"
     title="Roofing Services Built to Protect What Matters"
-    subtitle={`From emergency repairs to complete replacements, Dependable Roofing Pros delivers expert workmanship across Chattanooga and the surrounding Tennessee and Georgia communities.`}
+    subtitle={`From emergency repairs to complete replacements, Dependable Roofing Pros delivers quality workmanship for homes and businesses across Coral Springs and South Florida.`}
     crumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
   />
 
@@ -60,7 +60,7 @@ const serviceListSchema = {
               </ul>
               <div class="mt-7 flex flex-wrap gap-3">
                 <a href="/contact" class="btn btn-primary">
-                  Get a Free Quote <Icon name="arrow" class="w-4 h-4" />
+                  Request an Estimate <Icon name="arrow" class="w-4 h-4" />
                 </a>
                 {(s.slug === "roof-replacement" ||
                   s.slug === "roof-repair") && (

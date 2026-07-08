@@ -22,12 +22,6 @@ const year = new Date().getFullYear();
       <p class="text-sm leading-relaxed text-ink-400">
         {site.shortDescription}
       </p>
-      <div class="flex items-center gap-1.5 mt-4 text-brand-400">
-        {Array.from({ length: 5 }).map(() => <Icon name="star" class="w-4 h-4" />)}
-        <span class="text-ink-300 text-sm ml-1"
-          >{site.rating.value} ({site.rating.count}+ reviews)</span
-        >
-      </div>
     </div>
 
     <div>
@@ -59,7 +53,7 @@ const year = new Date().getFullYear();
         </li>
         <li>
           <a href="/contact" class="hover:text-white transition"
-            >Free Estimate</a
+            >Request an Estimate</a
           >
         </li>
       </ul>
@@ -72,12 +66,16 @@ const year = new Date().getFullYear();
           <Icon name="phone" class="w-5 h-5 text-brand-400 shrink-0" />
           <a href={site.phoneHref} class="hover:text-white">{site.phone}</a>
         </li>
-        <li class="flex gap-3">
-          <Icon name="mail" class="w-5 h-5 text-brand-400 shrink-0" />
-          <a href={`mailto:${site.email}`} class="hover:text-white break-all"
-            >{site.email}</a
-          >
-        </li>
+        {
+          site.email && (
+            <li class="flex gap-3">
+              <Icon name="mail" class="w-5 h-5 text-brand-400 shrink-0" />
+              <a href={`mailto:${site.email}`} class="hover:text-white break-all">
+                {site.email}
+              </a>
+            </li>
+          )
+        }
         <li class="flex gap-3">
           <Icon name="pin" class="w-5 h-5 text-brand-400 shrink-0" />
           <span>
@@ -87,12 +85,8 @@ const year = new Date().getFullYear();
           </span>
         </li>
         <li class="flex gap-3">
-          <Icon name="clock" class="w-5 h-5 text-brand-400 shrink-0" />
-          <span>
-            {site.hours.map((h) => (
-              <span class="block">{h.days}: {h.time}</span>
-            ))}
-          </span>
+          <Icon name="pin" class="w-5 h-5 text-brand-400 shrink-0" />
+          <span>Serving Coral Springs &amp; South Florida</span>
         </li>
       </ul>
     </div>
@@ -102,8 +96,8 @@ const year = new Date().getFullYear();
     <div
       class="container-x py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink-500"
     >
-      <p>&copy; {year} {site.legalName}. All rights reserved.</p>
-      <p>Licensed · Bonded · Insured · Serving {site.address.city}, {site.address.region}</p>
+      <p>&copy; {year} {site.name}. All rights reserved.</p>
+      <p>Roofing Contractor in Coral Springs, Florida</p>
     </div>
   </div>
 </footer>

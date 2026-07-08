@@ -4,30 +4,33 @@ import PageHero from "../components/PageHero.astro";
 import CtaBand from "../components/CtaBand.astro";
 import Icon from "../components/Icon.astro";
 import { site } from "../data/site";
+import { services } from "../data/services";
 
-const title = `About ${site.name} | Chattanooga Roofing Experts`;
-const description = `Learn about Dependable Roofing Pros — a locally owned, licensed & insured roofing contractor serving Chattanooga, TN for ${site.yearsExperience}+ years with honest, quality workmanship.`;
+const title = `About ${site.name} | Coral Springs Roofing Contractor`;
+const description = `Dependable Roofing Pros is a roofing contractor in Coral Springs, FL, serving homeowners and businesses across South Florida with roof repair, replacement and installation.`;
 
 const values = [
-  { icon: "shield", title: "Integrity First", text: "We give honest recommendations and fair pricing — even when it means less work for us." },
-  { icon: "award", title: "Craftsmanship", text: "Every roof is installed to last, using quality materials and proven methods." },
-  { icon: "users", title: "Community", text: "We're your neighbors, and we treat every home like it belongs to family." },
-  { icon: "clock", title: "Reliability", text: "We show up on time, communicate clearly, and finish what we start." },
+  { icon: "shield", title: "Integrity First", text: "We give honest recommendations and straightforward service on every project." },
+  { icon: "award", title: "Quality Workmanship", text: "We use quality materials and careful installation on every roof." },
+  { icon: "users", title: "Community", text: "We're based in Coral Springs and proud to serve our South Florida neighbors." },
+  { icon: "clock", title: "Reliability", text: "We communicate clearly and follow through on what we start." },
 ];
 
-const milestones = [
-  { value: `${site.yearsExperience}+`, label: "Years in business" },
-  { value: "2,500+", label: "Roofs completed" },
-  { value: `${site.rating.value}★`, label: "Customer rating" },
-  { value: "12+", label: "Communities served" },
+const chooseUs = [
+  "Locally based in Coral Springs",
+  "Residential & commercial roofing",
+  "Roofing built for South Florida weather",
+  "Honest, straightforward service",
+  "Quality materials & careful installation",
+  "Respectful crews who clean up",
 ];
 ---
 
 <BaseLayout title={title} description={description} path="/about">
   <PageHero
-    eyebrow="Locally Owned & Operated"
-    title="Protecting Chattanooga Homes for Over 18 Years"
-    subtitle="Dependable Roofing Pros was built on a simple idea: treat every customer honestly, do quality work, and stand behind it. That's why our neighbors keep calling us back."
+    eyebrow="Roofing Contractor in Coral Springs, FL"
+    title="About Dependable Roofing Pros"
+    subtitle="We're a South Florida roofing contractor focused on honest service, quality workmanship, and roofs built to handle Florida's weather."
     crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
   />
 
@@ -35,29 +38,28 @@ const milestones = [
     <div class="container-x grid lg:grid-cols-2 gap-14 items-center">
       <div>
         <p class="text-brand-600 font-semibold tracking-wide uppercase text-sm">
-          Our Story
+          Who We Are
         </p>
         <h2 class="mt-2 font-display text-3xl md:text-4xl font-extrabold text-ink-900">
-          Craftsmanship, Reliability &amp; Long-Lasting Results
+          Craftsmanship, Reliability &amp; Straightforward Service
         </h2>
         <div class="mt-5 space-y-4 text-ink-600 text-lg leading-relaxed">
           <p>
-            At Dependable Roofing Pros, we've spent over {site.yearsExperience}
-            years protecting homes and businesses with quality roofing solutions.
-            Serving Chattanooga, Cleveland, Dalton and the surrounding areas, our
-            team is dedicated to delivering craftsmanship, reliability and results
-            that stand the test of time.
+            Dependable Roofing Pros is a roofing contractor based in Coral
+            Springs, Florida. We provide roof repair, roof replacement and new
+            roof installation for homeowners and businesses throughout South
+            Florida.
           </p>
           <p>
-            Whether it's a roof repair, a full replacement, or ongoing
-            maintenance, we approach every project with the same commitment to
-            excellence. Our mission is simple: provide durable roofing that keeps
-            your property safe, secure and looking its best.
+            Whether it's a repair, a full replacement, or ongoing maintenance, we
+            approach every project with the same commitment to quality and
+            reliable service. Our goal is simple: dependable roofing that helps
+            keep your property protected.
           </p>
           <p>
-            We're proud to be a locally owned, licensed, bonded and insured
-            company — and even prouder of the trust our community places in us
-            every day.
+            South Florida weather can be demanding, so we focus on roofing that's
+            built to handle the sun, heavy rain and hurricane season — installed
+            with care and clear communication throughout.
           </p>
         </div>
         <a href="/contact" class="btn btn-primary mt-8">
@@ -65,15 +67,19 @@ const milestones = [
         </a>
       </div>
 
-      <div class="grid grid-cols-2 gap-5">
+      <div class="grid sm:grid-cols-2 gap-5">
         {
-          milestones.map((m) => (
-            <div class="rounded-2xl bg-ink-950 text-white p-8 text-center">
-              <div class="font-display text-4xl font-extrabold text-brand-500">
-                {m.value}
-              </div>
-              <div class="mt-2 text-ink-300">{m.label}</div>
-            </div>
+          services.slice(0, 4).map((s) => (
+            <a
+              href={s.href}
+              class="rounded-2xl bg-ink-50 border border-ink-100 p-6 hover:border-brand-200 transition"
+            >
+              <span class="grid place-items-center w-12 h-12 rounded-xl bg-brand-600 text-white">
+                <Icon name={s.icon} class="w-6 h-6" />
+              </span>
+              <h3 class="mt-4 font-bold text-ink-900">{s.title}</h3>
+              <p class="mt-1.5 text-sm text-ink-600">{s.short}</p>
+            </a>
           ))
         }
       </div>
@@ -115,24 +121,16 @@ const milestones = [
       >
         <div>
           <h2 class="font-display text-3xl font-extrabold">
-            Licensed, Bonded &amp; Insured
+            Why Choose Dependable Roofing Pros
           </h2>
           <p class="mt-4 text-ink-300 text-lg">
-            When you hire Dependable Roofing Pros, you're fully protected. We
-            carry the proper licensing and insurance so you never have to worry —
-            just a quality roof and total peace of mind.
+            We keep roofing simple and straightforward — quality work, clear
+            communication, and a team that's local to South Florida.
           </p>
         </div>
         <ul class="grid sm:grid-cols-2 gap-4">
           {
-            [
-              "Fully licensed contractor",
-              "Bonded & insured",
-              "Manufacturer certified",
-              "Workmanship guarantee",
-              "Free written estimates",
-              "18+ years of experience",
-            ].map((item) => (
+            chooseUs.map((item) => (
               <li class="flex items-center gap-3">
                 <Icon name="check" class="w-5 h-5 text-brand-400 shrink-0" />
                 <span class="text-ink-200">{item}</span>

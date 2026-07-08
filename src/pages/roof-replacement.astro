@@ -5,8 +5,8 @@ import CtaBand from "../components/CtaBand.astro";
 import Icon from "../components/Icon.astro";
 import { site } from "../data/site";
 
-const title = "Roof Replacement in Chattanooga, TN";
-const description = `Professional roof replacement in Chattanooga & North Georgia. Durable asphalt, metal & tile roofing with manufacturer warranties. Free estimate — call ${site.phone}.`;
+const title = "Roof Replacement in Coral Springs, FL";
+const description = `Roof replacement and new roof installation in Coral Springs & South Florida. Durable asphalt, metal, tile & flat roofing systems. Call ${site.phone}.`;
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -46,12 +46,12 @@ const materials = [
 ];
 
 const steps = [
-  "Free inspection & detailed written estimate",
-  "Material selection guidance to fit your budget",
+  "On-site assessment & written estimate",
+  "Material selection guidance for your project",
   "Complete tear-off of the old roofing system",
   "Deck inspection & repair of any damage",
   "Installation of underlayment, flashing & new roof",
-  "Full cleanup and final quality walkthrough",
+  "Full cleanup and final walkthrough",
 ];
 ---
 
@@ -63,8 +63,8 @@ const steps = [
 >
   <PageHero
     eyebrow="Roof Replacement & New Installations"
-    title="A Brand-New Roof Built to Last Decades"
-    subtitle="When repairs are no longer enough, our expert crews deliver a durable, beautiful, energy-efficient roof — installed right and backed by strong warranties."
+    title="A Brand-New Roof, Installed Right"
+    subtitle="When repairs are no longer enough, our crews install a durable, energy-efficient roof suited to South Florida — built to protect your property."
     crumbs={[
       { label: "Home", href: "/" },
       { label: "Services", href: "/services" },
@@ -76,20 +76,19 @@ const steps = [
     <div class="container-x grid lg:grid-cols-3 gap-12">
       <div class="lg:col-span-2 prose-lg">
         <h2 class="font-display text-3xl font-extrabold text-ink-900">
-          Trusted Roof Replacement in Chattanooga
+          Roof Replacement in Coral Springs
         </h2>
         <p class="mt-4 text-ink-600 text-lg leading-relaxed">
-          Your roof is your home's first line of defense. When it reaches the end
-          of its life, a professional replacement protects everything beneath it.
-          With over {site.yearsExperience} years of experience, Dependable
-          Roofing Pros installs premium roofing systems designed to withstand the
-          Tennessee Valley's storms, heat and humidity — for decades to come.
+          Your roof is your property's first line of defense. When it reaches the
+          end of its life, a full replacement protects everything beneath it.
+          Dependable Roofing Pros installs roofing systems designed to stand up to
+          South Florida's sun, heavy rain and hurricane season.
         </p>
         <p class="mt-4 text-ink-600 text-lg leading-relaxed">
-          We handle everything from a full tear-off and deck repair to the final
-          cleanup, using quality materials and proven installation methods. Every
-          project is completed by our skilled, respectful crews and backed by a
-          workmanship guarantee.
+          We handle everything from a full tear-off and deck inspection to the
+          final cleanup, using quality materials and careful installation. Every
+          project is completed by our respectful crews with clear communication
+          from start to finish.
         </p>
 
         <h3 class="mt-10 font-display text-2xl font-bold text-ink-900">
@@ -126,10 +125,10 @@ const steps = [
       <aside class="lg:col-span-1">
         <div class="sticky top-28 space-y-6">
           <div class="rounded-2xl bg-ink-950 text-white p-7">
-            <h3 class="font-display text-xl font-bold">Free Roof Estimate</h3>
+            <h3 class="font-display text-xl font-bold">Request an Estimate</h3>
             <p class="mt-2 text-ink-300 text-sm">
-              Find out exactly what your new roof will cost — no pressure, no
-              obligation.
+              Talk to us about replacing your roof. Call or send us a message and
+              we'll be in touch.
             </p>
             <a href={site.phoneHref} class="btn btn-primary w-full mt-5">
               <Icon name="phone" class="w-5 h-5" /> {site.phone}
@@ -140,10 +139,10 @@ const steps = [
           </div>
           <div class="rounded-2xl border border-ink-100 p-7">
             <Icon name="shield" class="w-10 h-10 text-brand-600" />
-            <h3 class="mt-4 font-bold text-ink-900">Warranty Protection</h3>
+            <h3 class="mt-4 font-bold text-ink-900">Quality Materials</h3>
             <p class="mt-2 text-ink-600 text-sm">
-              Manufacturer material warranties plus our own workmanship guarantee
-              on every installation.
+              We use quality roofing materials and careful installation methods
+              suited to South Florida's climate.
             </p>
           </div>
         </div>
@@ -181,6 +180,6 @@ const steps = [
 
   <CtaBand
     title="Ready for a New Roof?"
-    subtitle="Schedule your free inspection and detailed estimate today."
+    subtitle="Contact Dependable Roofing Pros to talk about your roof replacement in Coral Springs and South Florida."
   />
 </BaseLayout>

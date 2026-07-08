@@ -2,27 +2,27 @@ export type Faq = { q: string; a: string };
 
 export const faqs: Faq[] = [
   {
-    q: "How much does a new roof cost in Chattanooga?",
-    a: "Roof replacement costs vary based on the size of your home, the roofing material, and the condition of the existing deck. Most residential asphalt shingle roofs in the Chattanooga area range from a few thousand dollars for smaller homes up to more for larger or premium material roofs. We provide free, detailed written estimates so you know exactly what to expect — no surprises.",
-  },
-  {
-    q: "Do you offer free roof inspections and estimates?",
-    a: "Yes. Every inspection and estimate is completely free and carries no obligation. We'll assess your roof, document any issues with photos, and give you honest recommendations along with a clear written quote.",
-  },
-  {
-    q: "How long does a roof replacement take?",
-    a: "Most residential roof replacements are completed in one to two days, depending on the size and complexity of the roof and the weather. We'll give you an accurate timeline before we begin and keep you informed throughout the project.",
-  },
-  {
-    q: "Do you help with insurance claims for storm damage?",
-    a: "Absolutely. We inspect for wind and hail damage, document everything your insurer needs, and work directly with your adjuster to make the claims process as smooth as possible.",
-  },
-  {
-    q: "Are you licensed, bonded, and insured?",
-    a: "Yes. Dependable Roofing Pros is fully licensed, bonded, and insured for your complete protection and peace of mind on every project.",
+    q: "What roofing services do you offer?",
+    a: "We provide roof repair, roof replacement, new roof installation, and storm and hurricane damage repair for both residential and commercial properties. Contact us to talk about what you need.",
   },
   {
     q: "What areas do you serve?",
-    a: "We proudly serve Chattanooga and the surrounding Tennessee and North Georgia communities, including Cleveland, Ooltewah, Hixson, Signal Mountain, East Ridge, Dalton, Ringgold, and more.",
+    a: "We're based in Coral Springs, FL and serve homeowners and businesses across South Florida, including Parkland, Coconut Creek, Margate, Tamarac, Sunrise, Plantation, Fort Lauderdale, Pompano Beach, Deerfield Beach and nearby communities.",
+  },
+  {
+    q: "How do I request an estimate?",
+    a: "Give us a call at (754) 291-7865 or fill out our contact form, and we'll get back to you to discuss your roofing project.",
+  },
+  {
+    q: "Do you repair storm and hurricane damage?",
+    a: "Yes. South Florida weather can be tough on roofs. We repair wind, leak and storm-related roof damage. Reach out to schedule an assessment of your roof.",
+  },
+  {
+    q: "Do you work on both homes and businesses?",
+    a: "Yes, we handle residential and commercial roofing projects. Contact us to tell us about your property and what you're looking for.",
+  },
+  {
+    q: "What types of roofs do you work with?",
+    a: "We work with a range of common roofing systems used throughout South Florida. Contact us and we'll help you find the right option for your property.",
   },
 ];

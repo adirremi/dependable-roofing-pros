@@ -1,70 +1,55 @@
 // Central source of truth for business information.
 // Update these values to change details across the entire site + structured data.
+// Only real, provided details are used here — nothing is assumed or invented.
 
 export const site = {
   name: "Dependable Roofing Pros",
-  legalName: "Dependable Roofing Pros LLC",
-  tagline: "Chattanooga's Trusted Roofing Contractor",
+  tagline: "Roofing Contractor in Coral Springs, Florida",
   shortDescription:
-    "Locally owned roofing contractor serving Chattanooga, TN and the surrounding Tennessee & Georgia communities with expert roof repair, replacement and new installations for over 18 years.",
-  // Update to your production domain (must match astro.config.mjs `site`)
-  url: "https://dependableroofingpros.com",
-  email: "info@dependableroofingpros.com",
-  phone: "(423) 500-6085",
-  phoneHref: "tel:+14235006085",
-  yearsExperience: 18,
-  foundedYear: 2007,
+    "Dependable Roofing Pros is a roofing contractor in Coral Springs, Florida, providing roof repair, roof replacement and new roof installation for homes and businesses across South Florida.",
+
+  // Live deployment URL. Update if you connect a custom domain.
+  url: "https://dependable-roofing-pros.vercel.app",
+
+  phone: "(754) 291-7865",
+  phoneHref: "tel:+17542917865",
+
+  // No public email was provided. Set your inbox below to receive form
+  // submissions, then this will be shown and wired to the contact forms.
+  email: "",
+  // Where the contact forms POST. Replace REPLACE_WITH_YOUR_EMAIL with the
+  // email address that should receive leads (uses https://formsubmit.co).
+  formEndpoint: "https://formsubmit.co/REPLACE_WITH_YOUR_EMAIL",
 
   address: {
-    street: "2409 E 14th St",
-    city: "Chattanooga",
-    region: "TN",
-    regionName: "Tennessee",
-    postalCode: "37404",
+    street: "1953 N University Dr",
+    city: "Coral Springs",
+    region: "FL",
+    regionName: "Florida",
+    postalCode: "33071",
     country: "US",
   },
 
-  // Approx coordinates for LocalBusiness structured data (Chattanooga, TN)
+  // Approximate coordinates for the business location (Coral Springs, FL)
   geo: {
-    latitude: 35.0326,
-    longitude: -85.2846,
+    latitude: 26.2543,
+    longitude: -80.2523,
   },
 
-  hours: [
-    { days: "Monday – Friday", time: "7:00 AM – 6:00 PM" },
-    { days: "Saturday", time: "8:00 AM – 2:00 PM" },
-    { days: "Sunday", time: "Emergency service only" },
-  ],
-  // Machine-readable hours for structured data
-  openingHours: [
-    "Mo-Fr 07:00-18:00",
-    "Sa 08:00-14:00",
-  ],
-
-  social: {
-    facebook: "https://www.facebook.com/",
-    instagram: "https://www.instagram.com/",
-    google: "https://www.google.com/maps",
-  },
-
-  rating: {
-    value: "4.9",
-    count: "127",
-  },
-
+  // Nearby South Florida communities (geographic context for local SEO)
   areas: [
-    "Chattanooga, TN",
-    "East Ridge, TN",
-    "Red Bank, TN",
-    "Soddy-Daisy, TN",
-    "Cleveland, TN",
-    "Ooltewah, TN",
-    "Signal Mountain, TN",
-    "Hixson, TN",
-    "Dalton, GA",
-    "Ringgold, GA",
-    "Fort Oglethorpe, GA",
-    "Rossville, GA",
+    "Coral Springs, FL",
+    "Parkland, FL",
+    "Coconut Creek, FL",
+    "Margate, FL",
+    "Tamarac, FL",
+    "Sunrise, FL",
+    "Plantation, FL",
+    "Fort Lauderdale, FL",
+    "Pompano Beach, FL",
+    "Deerfield Beach, FL",
+    "Boca Raton, FL",
+    "Weston, FL",
   ],
 };
 

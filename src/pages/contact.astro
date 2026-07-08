@@ -5,25 +5,28 @@ import Icon from "../components/Icon.astro";
 import { site } from "../data/site";
 import { services } from "../data/services";
 
-const title = "Contact Us | Free Roofing Estimate in Chattanooga, TN";
-const description = `Contact Dependable Roofing Pros for a free roofing estimate in Chattanooga, TN. Call ${site.phone} or request a quote online. Fast, friendly, no-obligation service.`;
+const title = "Contact Us | Roofing Estimate in Coral Springs, FL";
+const description = `Contact Dependable Roofing Pros in Coral Springs, FL. Call ${site.phone} or request an estimate online for roof repair, replacement or installation in South Florida.`;
 
 const contactPoints = [
   { icon: "phone", label: "Call Us", value: site.phone, href: site.phoneHref },
-  { icon: "mail", label: "Email Us", value: site.email, href: `mailto:${site.email}` },
+  ...(site.email
+    ? [{ icon: "mail", label: "Email Us", value: site.email, href: `mailto:${site.email}` }]
+    : []),
   {
     icon: "pin",
     label: "Visit Us",
     value: `${site.address.street}, ${site.address.city}, ${site.address.region} ${site.address.postalCode}`,
+    href: undefined as string | undefined,
   },
 ];
 ---
 
 <BaseLayout title={title} description={description} path="/contact">
   <PageHero
-    eyebrow="Free, No-Obligation Estimates"
-    title="Let's Talk About Your Roof"
-    subtitle="Call us or fill out the form below and our team will get back to you within one business day. We're happy to answer any questions."
+    eyebrow="Let's Talk"
+    title="Contact Dependable Roofing Pros"
+    subtitle="Call us or fill out the form below and our team will get back to you to discuss your roofing project. We're happy to answer any questions."
     crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
   />
 
@@ -60,18 +63,16 @@ const contactPoints = [
 
         <div class="bg-ink-950 text-white rounded-2xl p-6">
           <h3 class="flex items-center gap-2 font-display text-lg font-bold">
-            <Icon name="clock" class="w-5 h-5 text-brand-400" /> Business Hours
+            <Icon name="pin" class="w-5 h-5 text-brand-400" /> Serving South Florida
           </h3>
-          <ul class="mt-4 space-y-2 text-ink-300">
-            {
-              site.hours.map((h) => (
-                <li class="flex justify-between gap-4">
-                  <span>{h.days}</span>
-                  <span class="text-white font-medium text-right">{h.time}</span>
-                </li>
-              ))
-            }
-          </ul>
+          <p class="mt-3 text-ink-300 text-sm">
+            Based in Coral Springs, we serve homeowners and businesses across the
+            surrounding South Florida communities. Give us a call and we'll be
+            glad to help.
+          </p>
+          <a href={site.phoneHref} class="btn btn-primary mt-5">
+            <Icon name="phone" class="w-5 h-5" /> {site.phone}
+          </a>
         </div>
       </div>
 
@@ -79,14 +80,14 @@ const contactPoints = [
       <div class="lg:col-span-3">
         <div class="rounded-2xl border border-ink-100 shadow-lg p-7 sm:p-9">
           <h2 class="font-display text-2xl font-extrabold text-ink-900">
-            Request Your Free Estimate
+            Request an Estimate
           </h2>
           <p class="mt-2 text-ink-500">
-            Tell us a little about your project and we'll be in touch shortly.
+            Tell us a little about your project and we'll be in touch.
           </p>
           <form
             class="mt-6 space-y-4"
-            action={`https://formsubmit.co/${site.email}`}
+            action={site.formEndpoint}
             method="POST"
           >
             <input type="hidden" name="_subject" value="New estimate request from website" />
@@ -165,11 +166,10 @@ const contactPoints = [
               ></textarea>
             </div>
             <button type="submit" class="btn btn-primary w-full text-base">
-              Send My Request <Icon name="arrow" class="w-5 h-5" />
+              Send Request <Icon name="arrow" class="w-5 h-5" />
             </button>
             <p class="text-xs text-ink-400 text-center">
-              By submitting, you agree to be contacted about your project. We
-              never share your information.
+              Prefer to talk now? Call {site.phone}.
             </p>
           </form>
         </div>

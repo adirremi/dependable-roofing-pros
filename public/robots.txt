@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dependableroofingpros.com/sitemap-index.xml
+Sitemap: https://dependable-roofing-pros.vercel.app/sitemap-index.xml
