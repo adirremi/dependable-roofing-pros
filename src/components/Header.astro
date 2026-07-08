@@ -1,0 +1,137 @@
+---
+import { site } from "../data/site";
+import Icon from "./Icon.astro";
+
+const nav = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Roof Replacement", href: "/roof-replacement" },
+  { label: "Roof Repair", href: "/roof-repair" },
+  { label: "About", href: "/about" },
+  { label: "Service Areas", href: "/service-areas" },
+];
+
+const current = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isActive = (href: string) =>
+  href === "/" ? current === "/" : current.startsWith(href);
+---
+
+<header
+  class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-ink-100"
+>
+  <!-- Top bar -->
+  <div class="bg-ink-900 text-ink-100 text-sm">
+    <div
+      class="container-x flex items-center justify-between gap-4 py-2"
+    >
+      <p class="hidden sm:flex items-center gap-2">
+        <Icon name="pin" class="w-4 h-4 text-brand-400" />
+        {site.address.city}, {site.address.region} &amp; surrounding areas
+      </p>
+      <div class="flex items-center gap-5">
+        <span class="hidden md:flex items-center gap-2">
+          <Icon name="clock" class="w-4 h-4 text-brand-400" />
+          Mon–Fri 7am–6pm
+        </span>
+        <a
+          href={site.phoneHref}
+          class="flex items-center gap-2 font-semibold text-white hover:text-brand-300"
+        >
+          <Icon name="phone" class="w-4 h-4" />
+          {site.phone}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main nav -->
+  <div class="container-x flex items-center justify-between py-3.5">
+    <a href="/" class="flex items-center gap-2.5 group">
+      <span
+        class="grid place-items-center w-11 h-11 rounded-xl bg-brand-600 text-white shadow-lg shadow-brand-600/30 group-hover:scale-105 transition"
+      >
+        <Icon name="home" class="w-6 h-6" />
+      </span>
+      <span class="leading-tight">
+        <span class="block font-display font-extrabold text-ink-900 text-lg"
+          >Dependable</span
+        >
+        <span
+          class="block text-[0.7rem] font-semibold tracking-[0.2em] text-brand-600 uppercase"
+          >Roofing Pros</span
+        >
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+            class={`px-3 py-2 rounded-lg text-sm font-semibold transition ${
+              isActive(item.href)
+                ? "text-brand-600"
+                : "text-ink-700 hover:text-brand-600 hover:bg-ink-50"
+            }`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="/contact" class="btn btn-primary text-sm hidden sm:inline-flex">
+        Free Estimate
+      </a>
+      <button
+        id="menu-toggle"
+        class="lg:hidden grid place-items-center w-11 h-11 rounded-lg border border-ink-200 text-ink-800"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          class="w-6 h-6"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-ink-100 bg-white">
+    <nav class="container-x py-3 flex flex-col" aria-label="Mobile">
+      {
+        [...nav, { label: "Contact", href: "/contact" }].map((item) => (
+          <a
+            href={item.href}
+            class="py-3 px-2 border-b border-ink-50 font-semibold text-ink-800"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a href={site.phoneHref} class="btn btn-primary mt-4">
+        <Icon name="phone" class="w-4 h-4" /> Call {site.phone}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => {
+    const open = menu?.classList.toggle("hidden");
+    toggle.setAttribute("aria-expanded", String(open === false));
+  });
+</script>

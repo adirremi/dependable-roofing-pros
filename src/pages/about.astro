@@ -1,0 +1,148 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../data/site";
+
+const title = `About ${site.name} | Chattanooga Roofing Experts`;
+const description = `Learn about Dependable Roofing Pros — a locally owned, licensed & insured roofing contractor serving Chattanooga, TN for ${site.yearsExperience}+ years with honest, quality workmanship.`;
+
+const values = [
+  { icon: "shield", title: "Integrity First", text: "We give honest recommendations and fair pricing — even when it means less work for us." },
+  { icon: "award", title: "Craftsmanship", text: "Every roof is installed to last, using quality materials and proven methods." },
+  { icon: "users", title: "Community", text: "We're your neighbors, and we treat every home like it belongs to family." },
+  { icon: "clock", title: "Reliability", text: "We show up on time, communicate clearly, and finish what we start." },
+];
+
+const milestones = [
+  { value: `${site.yearsExperience}+`, label: "Years in business" },
+  { value: "2,500+", label: "Roofs completed" },
+  { value: `${site.rating.value}★`, label: "Customer rating" },
+  { value: "12+", label: "Communities served" },
+];
+---
+
+<BaseLayout title={title} description={description} path="/about">
+  <PageHero
+    eyebrow="Locally Owned & Operated"
+    title="Protecting Chattanooga Homes for Over 18 Years"
+    subtitle="Dependable Roofing Pros was built on a simple idea: treat every customer honestly, do quality work, and stand behind it. That's why our neighbors keep calling us back."
+    crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
+  />
+
+  <section class="py-20">
+    <div class="container-x grid lg:grid-cols-2 gap-14 items-center">
+      <div>
+        <p class="text-brand-600 font-semibold tracking-wide uppercase text-sm">
+          Our Story
+        </p>
+        <h2 class="mt-2 font-display text-3xl md:text-4xl font-extrabold text-ink-900">
+          Craftsmanship, Reliability &amp; Long-Lasting Results
+        </h2>
+        <div class="mt-5 space-y-4 text-ink-600 text-lg leading-relaxed">
+          <p>
+            At Dependable Roofing Pros, we've spent over {site.yearsExperience}
+            years protecting homes and businesses with quality roofing solutions.
+            Serving Chattanooga, Cleveland, Dalton and the surrounding areas, our
+            team is dedicated to delivering craftsmanship, reliability and results
+            that stand the test of time.
+          </p>
+          <p>
+            Whether it's a roof repair, a full replacement, or ongoing
+            maintenance, we approach every project with the same commitment to
+            excellence. Our mission is simple: provide durable roofing that keeps
+            your property safe, secure and looking its best.
+          </p>
+          <p>
+            We're proud to be a locally owned, licensed, bonded and insured
+            company — and even prouder of the trust our community places in us
+            every day.
+          </p>
+        </div>
+        <a href="/contact" class="btn btn-primary mt-8">
+          Work With Us <Icon name="arrow" class="w-4 h-4" />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 gap-5">
+        {
+          milestones.map((m) => (
+            <div class="rounded-2xl bg-ink-950 text-white p-8 text-center">
+              <div class="font-display text-4xl font-extrabold text-brand-500">
+                {m.value}
+              </div>
+              <div class="mt-2 text-ink-300">{m.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-ink-50">
+    <div class="container-x">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-brand-600 font-semibold tracking-wide uppercase text-sm">
+          What Drives Us
+        </p>
+        <h2 class="mt-2 font-display text-3xl md:text-4xl font-extrabold text-ink-900">
+          Our Core Values
+        </h2>
+      </div>
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          values.map((v) => (
+            <div class="bg-white rounded-2xl p-7 border border-ink-100">
+              <span class="grid place-items-center w-14 h-14 rounded-xl bg-brand-600 text-white">
+                <Icon name={v.icon} class="w-7 h-7" />
+              </span>
+              <h3 class="mt-5 font-display text-lg font-bold text-ink-900">
+                {v.title}
+              </h3>
+              <p class="mt-2 text-ink-600 text-sm">{v.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="container-x">
+      <div
+        class="rounded-3xl bg-gradient-to-br from-ink-900 to-ink-950 text-white p-10 md:p-14 grid lg:grid-cols-2 gap-10 items-center"
+      >
+        <div>
+          <h2 class="font-display text-3xl font-extrabold">
+            Licensed, Bonded &amp; Insured
+          </h2>
+          <p class="mt-4 text-ink-300 text-lg">
+            When you hire Dependable Roofing Pros, you're fully protected. We
+            carry the proper licensing and insurance so you never have to worry —
+            just a quality roof and total peace of mind.
+          </p>
+        </div>
+        <ul class="grid sm:grid-cols-2 gap-4">
+          {
+            [
+              "Fully licensed contractor",
+              "Bonded & insured",
+              "Manufacturer certified",
+              "Workmanship guarantee",
+              "Free written estimates",
+              "18+ years of experience",
+            ].map((item) => (
+              <li class="flex items-center gap-3">
+                <Icon name="check" class="w-5 h-5 text-brand-400 shrink-0" />
+                <span class="text-ink-200">{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

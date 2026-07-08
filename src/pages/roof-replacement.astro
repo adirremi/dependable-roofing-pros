@@ -1,0 +1,186 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../data/site";
+
+const title = "Roof Replacement in Chattanooga, TN";
+const description = `Professional roof replacement in Chattanooga & North Georgia. Durable asphalt, metal & tile roofing with manufacturer warranties. Free estimate — call ${site.phone}.`;
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Roof Replacement",
+  provider: { "@id": `${site.url}/#business` },
+  areaServed: site.areas,
+  description,
+  url: `${site.url}/roof-replacement`,
+};
+
+const signs = [
+  "Roof is 20+ years old",
+  "Curling, cracked or missing shingles",
+  "Granules collecting in gutters",
+  "Sagging or soft spots on the roof deck",
+  "Daylight or leaks visible in the attic",
+  "Rising energy bills from poor insulation",
+];
+
+const materials = [
+  {
+    icon: "home",
+    title: "Asphalt Shingles",
+    text: "Architectural and 3-tab shingles — the most popular, cost-effective and versatile choice for homes.",
+  },
+  {
+    icon: "shield",
+    title: "Metal Roofing",
+    text: "Long-lasting, energy-efficient standing seam and metal panels that stand up to severe weather.",
+  },
+  {
+    icon: "building",
+    title: "Tile & Flat Systems",
+    text: "Premium tile and low-slope flat roofing solutions for distinctive homes and commercial buildings.",
+  },
+];
+
+const steps = [
+  "Free inspection & detailed written estimate",
+  "Material selection guidance to fit your budget",
+  "Complete tear-off of the old roofing system",
+  "Deck inspection & repair of any damage",
+  "Installation of underlayment, flashing & new roof",
+  "Full cleanup and final quality walkthrough",
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/roof-replacement"
+  jsonLd={[serviceSchema]}
+>
+  <PageHero
+    eyebrow="Roof Replacement & New Installations"
+    title="A Brand-New Roof Built to Last Decades"
+    subtitle="When repairs are no longer enough, our expert crews deliver a durable, beautiful, energy-efficient roof — installed right and backed by strong warranties."
+    crumbs={[
+      { label: "Home", href: "/" },
+      { label: "Services", href: "/services" },
+      { label: "Roof Replacement" },
+    ]}
+  />
+
+  <section class="py-20">
+    <div class="container-x grid lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2 prose-lg">
+        <h2 class="font-display text-3xl font-extrabold text-ink-900">
+          Trusted Roof Replacement in Chattanooga
+        </h2>
+        <p class="mt-4 text-ink-600 text-lg leading-relaxed">
+          Your roof is your home's first line of defense. When it reaches the end
+          of its life, a professional replacement protects everything beneath it.
+          With over {site.yearsExperience} years of experience, Dependable
+          Roofing Pros installs premium roofing systems designed to withstand the
+          Tennessee Valley's storms, heat and humidity — for decades to come.
+        </p>
+        <p class="mt-4 text-ink-600 text-lg leading-relaxed">
+          We handle everything from a full tear-off and deck repair to the final
+          cleanup, using quality materials and proven installation methods. Every
+          project is completed by our skilled, respectful crews and backed by a
+          workmanship guarantee.
+        </p>
+
+        <h3 class="mt-10 font-display text-2xl font-bold text-ink-900">
+          Signs It's Time to Replace Your Roof
+        </h3>
+        <ul class="mt-5 grid sm:grid-cols-2 gap-3">
+          {
+            signs.map((s) => (
+              <li class="flex items-center gap-3 bg-ink-50 rounded-lg p-3.5">
+                <Icon name="check" class="w-5 h-5 text-brand-600 shrink-0" />
+                <span class="text-ink-700">{s}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <h3 class="mt-10 font-display text-2xl font-bold text-ink-900">
+          Our Roof Replacement Process
+        </h3>
+        <ol class="mt-5 space-y-3">
+          {
+            steps.map((s, i) => (
+              <li class="flex gap-4 items-start">
+                <span class="grid place-items-center w-8 h-8 shrink-0 rounded-full bg-brand-600 text-white font-bold text-sm">
+                  {i + 1}
+                </span>
+                <span class="text-ink-700 text-lg pt-0.5">{s}</span>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+
+      <aside class="lg:col-span-1">
+        <div class="sticky top-28 space-y-6">
+          <div class="rounded-2xl bg-ink-950 text-white p-7">
+            <h3 class="font-display text-xl font-bold">Free Roof Estimate</h3>
+            <p class="mt-2 text-ink-300 text-sm">
+              Find out exactly what your new roof will cost — no pressure, no
+              obligation.
+            </p>
+            <a href={site.phoneHref} class="btn btn-primary w-full mt-5">
+              <Icon name="phone" class="w-5 h-5" /> {site.phone}
+            </a>
+            <a href="/contact" class="btn btn-ghost w-full mt-3">
+              Request Online
+            </a>
+          </div>
+          <div class="rounded-2xl border border-ink-100 p-7">
+            <Icon name="shield" class="w-10 h-10 text-brand-600" />
+            <h3 class="mt-4 font-bold text-ink-900">Warranty Protection</h3>
+            <p class="mt-2 text-ink-600 text-sm">
+              Manufacturer material warranties plus our own workmanship guarantee
+              on every installation.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="py-20 bg-ink-50">
+    <div class="container-x">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-ink-900">
+          Roofing Materials We Install
+        </h2>
+        <p class="mt-4 text-ink-600 text-lg">
+          We'll help you choose the right system for your home, style and budget.
+        </p>
+      </div>
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        {
+          materials.map((m) => (
+            <div class="bg-white rounded-2xl p-7 border border-ink-100">
+              <span class="grid place-items-center w-14 h-14 rounded-xl bg-brand-50 text-brand-600">
+                <Icon name={m.icon} class="w-7 h-7" />
+              </span>
+              <h3 class="mt-5 font-display text-xl font-bold text-ink-900">
+                {m.title}
+              </h3>
+              <p class="mt-2 text-ink-600">{m.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Ready for a New Roof?"
+    subtitle="Schedule your free inspection and detailed estimate today."
+  />
+</BaseLayout>

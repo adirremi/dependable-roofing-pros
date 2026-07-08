@@ -1,0 +1,426 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { site } from "../data/site";
+import { services } from "../data/services";
+import { testimonials } from "../data/testimonials";
+import { faqs } from "../data/faqs";
+
+const title = `${site.name} | Roofing Contractor in Chattanooga, TN`;
+const description = `Trusted Chattanooga roofing contractor with ${site.yearsExperience}+ years of experience. Expert roof repair, replacement & storm damage restoration. Free estimates — call ${site.phone}.`;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const stats = [
+  { value: `${site.yearsExperience}+`, label: "Years Experience" },
+  { value: "2,500+", label: "Roofs Completed" },
+  { value: `${site.rating.value}★`, label: "Average Rating" },
+  { value: "100%", label: "Satisfaction Focus" },
+];
+
+const whyUs = [
+  {
+    icon: "shield",
+    title: "Licensed, Bonded & Insured",
+    text: "Full protection on every project so you can have complete peace of mind.",
+  },
+  {
+    icon: "award",
+    title: `${site.yearsExperience}+ Years of Experience`,
+    text: "Nearly two decades protecting homes and businesses across the region.",
+  },
+  {
+    icon: "money",
+    title: "Honest, Upfront Pricing",
+    text: "Free detailed written estimates with no hidden fees or surprises.",
+  },
+  {
+    icon: "clock",
+    title: "On-Time, Clean Workmanship",
+    text: "We show up when we say we will and leave your property spotless.",
+  },
+];
+
+const steps = [
+  {
+    n: "01",
+    title: "Free Inspection",
+    text: "We assess your roof and document every issue with photos.",
+  },
+  {
+    n: "02",
+    title: "Clear Estimate",
+    text: "You get a detailed written quote — no obligation, no pressure.",
+  },
+  {
+    n: "03",
+    title: "Expert Installation",
+    text: "Our skilled crew completes the job on time and on budget.",
+  },
+  {
+    n: "04",
+    title: "Final Walkthrough",
+    text: "We clean up completely and confirm you're 100% satisfied.",
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path="/" jsonLd={[faqSchema]}>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-ink-950 text-white">
+    <div
+      class="absolute inset-0"
+      style="background:
+        radial-gradient(1200px 600px at 75% -10%, rgba(224,48,26,0.35), transparent 60%),
+        linear-gradient(160deg, #0f172a 0%, #020617 100%);"
+    >
+    </div>
+    <div
+      class="absolute inset-0 opacity-[0.08]"
+      style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 44px 44px;"
+    >
+    </div>
+
+    <div class="container-x relative grid lg:grid-cols-12 gap-10 py-16 md:py-24">
+      <div class="lg:col-span-7 reveal">
+        <span
+          class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-1.5 text-sm font-medium"
+        >
+          <Icon name="pin" class="w-4 h-4 text-brand-400" />
+          Serving Chattanooga, TN &amp; North Georgia
+        </span>
+        <h1
+          class="mt-6 font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.05]"
+        >
+          Chattanooga's <span class="text-brand-500">Dependable</span> Roofing
+          Contractor
+        </h1>
+        <p class="mt-6 text-lg text-ink-300 max-w-xl">
+          For over {site.yearsExperience} years, homeowners and businesses have
+          trusted us for expert roof repair, replacement and storm damage
+          restoration — built to last and backed by craftsmanship you can depend
+          on.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="/contact" class="btn btn-primary text-base">
+            Get Your Free Estimate <Icon name="arrow" class="w-5 h-5" />
+          </a>
+          <a href={site.phoneHref} class="btn btn-ghost text-base">
+            <Icon name="phone" class="w-5 h-5" /> {site.phone}
+          </a>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+          <span class="flex items-center gap-2">
+            <Icon name="check" class="w-5 h-5 text-brand-400" /> Free Inspections
+          </span>
+          <span class="flex items-center gap-2">
+            <Icon name="check" class="w-5 h-5 text-brand-400" /> Insurance Claims Help
+          </span>
+          <span class="flex items-center gap-2">
+            <Icon name="check" class="w-5 h-5 text-brand-400" /> Licensed &amp; Insured
+          </span>
+        </div>
+      </div>
+
+      <!-- Estimate card -->
+      <div class="lg:col-span-5 reveal">
+        <div
+          class="rounded-2xl bg-white text-ink-800 p-6 sm:p-8 shadow-2xl shadow-black/40"
+        >
+          <div class="flex items-center gap-1 text-brand-500 mb-2">
+            {Array.from({ length: 5 }).map(() => <Icon name="star" class="w-5 h-5" />)}
+            <span class="text-ink-600 text-sm ml-2 font-medium"
+              >{site.rating.value}/5 · {site.rating.count}+ reviews</span
+            >
+          </div>
+          <h2 class="font-display text-2xl font-bold">Request a Free Estimate</h2>
+          <p class="text-ink-500 text-sm mt-1">
+            We'll get back to you within one business day.
+          </p>
+          <form
+            class="mt-5 space-y-3"
+            action={`https://formsubmit.co/${site.email}`}
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="New estimate request" />
+            <div class="grid sm:grid-cols-2 gap-3">
+              <input
+                name="name"
+                required
+                placeholder="Full name"
+                class="w-full rounded-lg border border-ink-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
+              />
+              <input
+                name="phone"
+                type="tel"
+                required
+                placeholder="Phone"
+                class="w-full rounded-lg border border-ink-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
+              />
+            </div>
+            <input
+              name="email"
+              type="email"
+              placeholder="Email"
+              class="w-full rounded-lg border border-ink-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
+            />
+            <select
+              name="service"
+              class="w-full rounded-lg border border-ink-200 px-3.5 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500"
+            >
+              <option value="">Service needed…</option>
+              {services.map((s) => <option value={s.title}>{s.title}</option>)}
+            </select>
+            <textarea
+              name="message"
+              rows="3"
+              placeholder="Tell us about your project"
+              class="w-full rounded-lg border border-ink-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
+            ></textarea>
+            <button type="submit" class="btn btn-primary w-full">
+              Get My Free Estimate
+            </button>
+            <p class="text-[0.7rem] text-ink-400 text-center">
+              No spam. Your information stays private.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="relative border-t border-white/10">
+      <div class="container-x grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+        {
+          stats.map((s) => (
+            <div class="py-6 text-center">
+              <div class="font-display text-3xl font-extrabold text-brand-500">
+                {s.value}
+              </div>
+              <div class="text-sm text-ink-400 mt-1">{s.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="py-20 bg-ink-50">
+    <div class="container-x">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-brand-600 font-semibold tracking-wide uppercase text-sm">
+          What We Do
+        </p>
+        <h2 class="mt-2 font-display text-3xl md:text-4xl font-extrabold text-ink-900">
+          Complete Roofing Services
+        </h2>
+        <p class="mt-4 text-ink-600 text-lg">
+          From minor repairs to full replacements, we handle every roofing need
+          with the same commitment to quality and reliability.
+        </p>
+      </div>
+
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          services.map((s) => (
+            <a
+              href={s.href}
+              class="group bg-white rounded-2xl p-7 border border-ink-100 hover:border-brand-200 hover:shadow-xl hover:shadow-ink-200/50 transition"
+            >
+              <span class="grid place-items-center w-14 h-14 rounded-xl bg-brand-50 text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                <Icon name={s.icon} class="w-7 h-7" />
+              </span>
+              <h3 class="mt-5 font-display text-xl font-bold text-ink-900">
+                {s.title}
+              </h3>
+              <p class="mt-2 text-ink-600 text-sm leading-relaxed">{s.blurb}</p>
+              <span class="mt-4 inline-flex items-center gap-1.5 text-brand-600 font-semibold text-sm">
+                Learn more
+                <Icon name="arrow" class="w-4 h-4 group-hover:translate-x-1 transition" />
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="py-20">
+    <div class="container-x grid lg:grid-cols-2 gap-14 items-center">
+      <div>
+        <p class="text-brand-600 font-semibold tracking-wide uppercase text-sm">
+          Why Choose Us
+        </p>
+        <h2 class="mt-2 font-display text-3xl md:text-4xl font-extrabold text-ink-900">
+          Roofing Done Right, Every Time
+        </h2>
+        <p class="mt-4 text-ink-600 text-lg">
+          We're a locally owned team that treats every roof like it's our own.
+          Our reputation is built on honesty, craftsmanship and results that
+          stand the test of time.
+        </p>
+        <div class="mt-8 grid sm:grid-cols-2 gap-6">
+          {
+            whyUs.map((w) => (
+              <div class="flex gap-4">
+                <span class="grid place-items-center w-12 h-12 shrink-0 rounded-xl bg-ink-900 text-brand-400">
+                  <Icon name={w.icon} class="w-6 h-6" />
+                </span>
+                <div>
+                  <h3 class="font-bold text-ink-900">{w.title}</h3>
+                  <p class="text-sm text-ink-600 mt-1">{w.text}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="relative">
+        <div
+          class="rounded-3xl bg-gradient-to-br from-ink-900 to-ink-950 p-8 sm:p-10 text-white overflow-hidden"
+        >
+          <Icon name="shield" class="w-14 h-14 text-brand-500" />
+          <h3 class="mt-5 font-display text-2xl font-bold">
+            Our Dependable Promise
+          </h3>
+          <p class="mt-3 text-ink-300">
+            Quality materials, skilled installation, and a workmanship guarantee
+            on every project. If it's not right, we make it right.
+          </p>
+          <ul class="mt-6 space-y-3">
+            {
+              [
+                "Manufacturer-backed material warranties",
+                "Workmanship guarantee on all installs",
+                "Transparent pricing, no hidden fees",
+                "Respectful, professional crews",
+              ].map((item) => (
+                <li class="flex items-center gap-3">
+                  <Icon name="check" class="w-5 h-5 text-brand-400 shrink-0" />
+                  <span class="text-ink-200">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <a href="/about" class="btn btn-primary mt-8">
+            More About Us <Icon name="arrow" class="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="py-20 bg-ink-950 text-white">
+    <div class="container-x">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-brand-500 font-semibold tracking-wide uppercase text-sm">
+          Our Process
+        </p>
+        <h2 class="mt-2 font-display text-3xl md:text-4xl font-extrabold">
+          Simple, Stress-Free &amp; Transparent
+        </h2>
+      </div>
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          steps.map((s) => (
+            <div class="relative rounded-2xl bg-white/5 border border-white/10 p-7">
+              <span class="font-display text-4xl font-extrabold text-brand-500/40">
+                {s.n}
+              </span>
+              <h3 class="mt-3 font-display text-xl font-bold">{s.title}</h3>
+              <p class="mt-2 text-ink-400 text-sm">{s.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="py-20">
+    <div class="container-x">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-brand-600 font-semibold tracking-wide uppercase text-sm">
+          Reviews
+        </p>
+        <h2 class="mt-2 font-display text-3xl md:text-4xl font-extrabold text-ink-900">
+          What Our Neighbors Say
+        </h2>
+        <div class="mt-4 flex items-center justify-center gap-1 text-brand-500">
+          {Array.from({ length: 5 }).map(() => <Icon name="star" class="w-6 h-6" />)}
+          <span class="text-ink-600 ml-2 font-medium"
+            >{site.rating.value} out of 5 · {site.rating.count}+ reviews</span
+          >
+        </div>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          testimonials.map((t) => (
+            <figure class="bg-ink-50 rounded-2xl p-7 border border-ink-100">
+              <Icon name="quote" class="w-8 h-8 text-brand-300" />
+              <blockquote class="mt-3 text-ink-700 leading-relaxed">
+                {t.text}
+              </blockquote>
+              <figcaption class="mt-5 flex items-center justify-between">
+                <div>
+                  <div class="font-bold text-ink-900">{t.name}</div>
+                  <div class="text-sm text-ink-500">{t.location}</div>
+                </div>
+                <span class="text-xs font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">
+                  {t.service}
+                </span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-ink-50">
+    <div class="container-x max-w-3xl">
+      <div class="text-center">
+        <p class="text-brand-600 font-semibold tracking-wide uppercase text-sm">
+          FAQ
+        </p>
+        <h2 class="mt-2 font-display text-3xl md:text-4xl font-extrabold text-ink-900">
+          Frequently Asked Questions
+        </h2>
+      </div>
+      <div class="mt-10 space-y-3">
+        {
+          faqs.map((f) => (
+            <details class="group bg-white rounded-xl border border-ink-100 p-5">
+              <summary class="flex items-center justify-between cursor-pointer font-semibold text-ink-900 list-none">
+                {f.q}
+                <span class="text-brand-600 text-2xl group-open:rotate-45 transition">
+                  +
+                </span>
+              </summary>
+              <p class="mt-3 text-ink-600 leading-relaxed">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

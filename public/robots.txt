@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dependableroofingpros.com/sitemap-index.xml

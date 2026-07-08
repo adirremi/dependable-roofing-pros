@@ -1,0 +1,55 @@
+---
+import Icon from "./Icon.astro";
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  crumbs?: { label: string; href?: string }[];
+}
+const { eyebrow, title, subtitle, crumbs = [] } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-ink-950 text-white">
+  <div
+    class="absolute inset-0"
+    style="background:
+      radial-gradient(900px 400px at 85% -20%, rgba(224,48,26,0.30), transparent 60%),
+      linear-gradient(160deg, #0f172a 0%, #020617 100%);"
+  >
+  </div>
+  <div
+    class="absolute inset-0 opacity-[0.07]"
+    style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 44px 44px;"
+  >
+  </div>
+  <div class="container-x relative py-14 md:py-20">
+    {
+      crumbs.length > 0 && (
+        <nav class="flex items-center gap-2 text-sm text-ink-400 mb-4" aria-label="Breadcrumb">
+          {crumbs.map((c, i) => (
+            <>
+              {c.href ? (
+                <a href={c.href} class="hover:text-white">{c.label}</a>
+              ) : (
+                <span class="text-ink-300">{c.label}</span>
+              )}
+              {i < crumbs.length - 1 && <span class="text-ink-600">/</span>}
+            </>
+          ))}
+        </nav>
+      )
+    }
+    {
+      eyebrow && (
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-1.5 text-sm font-medium">
+          <Icon name="check" class="w-4 h-4 text-brand-400" />
+          {eyebrow}
+        </span>
+      )
+    }
+    <h1 class="mt-5 font-display font-extrabold text-4xl md:text-5xl max-w-3xl">
+      {title}
+    </h1>
+    {subtitle && <p class="mt-5 text-lg text-ink-300 max-w-2xl">{subtitle}</p>}
+  </div>
+</section>

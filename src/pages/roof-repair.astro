@@ -1,0 +1,129 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../data/site";
+
+const title = "Roof Repair & Leak Repair in Chattanooga, TN";
+const description = `Fast, reliable roof repair in Chattanooga & North Georgia. Leak detection, shingle & flashing repair, emergency tarping. Same-day service available — call ${site.phone}.`;
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Roof Repair",
+  provider: { "@id": `${site.url}/#business` },
+  areaServed: site.areas,
+  description,
+  url: `${site.url}/roof-repair`,
+};
+
+const repairs = [
+  { icon: "wrench", title: "Leak Detection & Repair", text: "We track down the true source of leaks and stop water damage at the root." },
+  { icon: "home", title: "Shingle Replacement", text: "Cracked, curled, missing or storm-damaged shingles replaced to match your roof." },
+  { icon: "shield", title: "Flashing & Sealant Repair", text: "Failed flashing around chimneys, walls and valleys resealed and secured." },
+  { icon: "layers", title: "Vent & Boot Repair", text: "Damaged pipe boots, vents and roof accessories repaired or replaced." },
+  { icon: "building", title: "Chimney & Skylight Sealing", text: "Common leak points properly flashed and waterproofed for good." },
+  { icon: "storm", title: "Emergency Tarping", text: "Rapid temporary protection to prevent further damage after a storm." },
+];
+
+const why = [
+  "Same-day and emergency service available",
+  "Honest assessments — we won't upsell you a new roof if a repair will do",
+  "Skilled technicians with 18+ years of experience",
+  "Quality materials and lasting workmanship",
+  "Free repair estimates",
+  "Insurance claim assistance for storm damage",
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/roof-repair"
+  jsonLd={[serviceSchema]}
+>
+  <PageHero
+    eyebrow="Roof Repair & Leak Repair"
+    title="Fast, Lasting Roof Repairs — Done Right"
+    subtitle="A small leak can turn into major damage fast. Our team finds the problem, fixes it properly, and protects your home — often the same day."
+    crumbs={[
+      { label: "Home", href: "/" },
+      { label: "Services", href: "/services" },
+      { label: "Roof Repair" },
+    ]}
+  />
+
+  <section class="py-20">
+    <div class="container-x grid lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2">
+        <h2 class="font-display text-3xl font-extrabold text-ink-900">
+          Dependable Roof Repair in Chattanooga
+        </h2>
+        <p class="mt-4 text-ink-600 text-lg leading-relaxed">
+          When your roof springs a leak or takes damage from a storm, you need a
+          team that responds quickly and fixes it right the first time. For over
+          {site.yearsExperience} years, Chattanooga homeowners and businesses have
+          relied on Dependable Roofing Pros for honest, high-quality roof repairs
+          that last.
+        </p>
+        <p class="mt-4 text-ink-600 text-lg leading-relaxed">
+          We diagnose the real source of the problem — not just the symptom — and
+          use quality materials to make repairs that hold up. And if a repair
+          isn't in your best interest, we'll tell you honestly.
+        </p>
+
+        <div class="mt-8 grid sm:grid-cols-2 gap-5">
+          {
+            repairs.map((r) => (
+              <div class="bg-ink-50 rounded-2xl p-6 border border-ink-100">
+                <span class="grid place-items-center w-12 h-12 rounded-xl bg-white text-brand-600 border border-ink-100">
+                  <Icon name={r.icon} class="w-6 h-6" />
+                </span>
+                <h3 class="mt-4 font-bold text-ink-900">{r.title}</h3>
+                <p class="mt-1.5 text-ink-600 text-sm">{r.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <aside class="lg:col-span-1">
+        <div class="sticky top-28 space-y-6">
+          <div class="rounded-2xl bg-brand-600 text-white p-7">
+            <Icon name="phone" class="w-10 h-10" />
+            <h3 class="mt-4 font-display text-xl font-bold">Roof Leaking Now?</h3>
+            <p class="mt-2 text-brand-50 text-sm">
+              Don't wait — water damage spreads fast. Call for fast, same-day
+              service.
+            </p>
+            <a
+              href={site.phoneHref}
+              class="btn bg-white text-brand-700 hover:bg-brand-50 w-full mt-5"
+            >
+              Call {site.phone}
+            </a>
+          </div>
+          <div class="rounded-2xl border border-ink-100 p-7">
+            <h3 class="font-bold text-ink-900">Why Homeowners Choose Us</h3>
+            <ul class="mt-4 space-y-2.5">
+              {
+                why.map((w) => (
+                  <li class="flex gap-2.5 text-sm text-ink-700">
+                    <Icon name="check" class="w-5 h-5 text-brand-600 shrink-0" />
+                    {w}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Stop That Leak for Good"
+    subtitle="Get a free repair estimate from Chattanooga's dependable roofing team."
+  />
+</BaseLayout>

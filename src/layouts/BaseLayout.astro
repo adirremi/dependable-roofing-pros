@@ -1,0 +1,140 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+
+export interface Props {
+  title: string;
+  description: string;
+  /** Path relative to root, e.g. "/roof-repair". Defaults to current path. */
+  path?: string;
+  image?: string;
+  /** Extra JSON-LD objects to inject (arrays of plain objects). */
+  jsonLd?: Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  image = "/og-default.svg",
+  jsonLd = [],
+  noindex = false,
+} = Astro.props;
+
+const canonicalPath = path ?? Astro.url.pathname;
+const canonical = new URL(canonicalPath, site.url).href;
+const ogImage = new URL(image, site.url).href;
+const fullTitle = title.includes(site.name)
+  ? title
+  : `${title} | ${site.name}`;
+
+// LocalBusiness / RoofingContractor schema present on every page
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "RoofingContractor",
+  "@id": `${site.url}/#business`,
+  name: site.name,
+  legalName: site.legalName,
+  description: site.shortDescription,
+  url: site.url,
+  telephone: site.phone,
+  email: site.email,
+  image: ogImage,
+  logo: new URL("/logo.svg", site.url).href,
+  priceRange: "$$",
+  foundingDate: String(site.foundedYear),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: site.geo.latitude,
+    longitude: site.geo.longitude,
+  },
+  openingHoursSpecification: site.openingHours.map((h) => h),
+  areaServed: site.areas.map((a) => ({ "@type": "City", name: a })),
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: site.rating.value,
+    reviewCount: site.rating.count,
+  },
+  sameAs: [site.social.facebook, site.social.instagram, site.social.google],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.name,
+  url: site.url,
+};
+
+const schemas = [businessSchema, websiteSchema, ...jsonLd];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    {
+      schemas.map((schema) => (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(schema)}
+        />
+      ))
+    }
+  </head>
+  <body class="antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-3 focus:left-3 focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow"
+      >Skip to content</a
+    >
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

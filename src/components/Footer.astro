@@ -1,0 +1,109 @@
+---
+import { site } from "../data/site";
+import { services } from "../data/services";
+import Icon from "./Icon.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-ink-950 text-ink-300">
+  <div class="container-x py-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <div class="flex items-center gap-2.5 mb-4">
+        <span
+          class="grid place-items-center w-10 h-10 rounded-xl bg-brand-600 text-white"
+        >
+          <Icon name="home" class="w-5 h-5" />
+        </span>
+        <span class="font-display font-extrabold text-white text-lg"
+          >Dependable Roofing Pros</span
+        >
+      </div>
+      <p class="text-sm leading-relaxed text-ink-400">
+        {site.shortDescription}
+      </p>
+      <div class="flex items-center gap-1.5 mt-4 text-brand-400">
+        {Array.from({ length: 5 }).map(() => <Icon name="star" class="w-4 h-4" />)}
+        <span class="text-ink-300 text-sm ml-1"
+          >{site.rating.value} ({site.rating.count}+ reviews)</span
+        >
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-white font-semibold mb-4">Our Services</h3>
+      <ul class="space-y-2.5 text-sm">
+        {
+          services.map((s) => (
+            <li>
+              <a href={s.href} class="hover:text-white transition">
+                {s.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-white font-semibold mb-4">Company</h3>
+      <ul class="space-y-2.5 text-sm">
+        <li><a href="/about" class="hover:text-white transition">About Us</a></li>
+        <li>
+          <a href="/service-areas" class="hover:text-white transition"
+            >Service Areas</a
+          >
+        </li>
+        <li>
+          <a href="/services" class="hover:text-white transition">All Services</a>
+        </li>
+        <li>
+          <a href="/contact" class="hover:text-white transition"
+            >Free Estimate</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-white font-semibold mb-4">Get In Touch</h3>
+      <ul class="space-y-3 text-sm">
+        <li class="flex gap-3">
+          <Icon name="phone" class="w-5 h-5 text-brand-400 shrink-0" />
+          <a href={site.phoneHref} class="hover:text-white">{site.phone}</a>
+        </li>
+        <li class="flex gap-3">
+          <Icon name="mail" class="w-5 h-5 text-brand-400 shrink-0" />
+          <a href={`mailto:${site.email}`} class="hover:text-white break-all"
+            >{site.email}</a
+          >
+        </li>
+        <li class="flex gap-3">
+          <Icon name="pin" class="w-5 h-5 text-brand-400 shrink-0" />
+          <span>
+            {site.address.street}<br />
+            {site.address.city}, {site.address.region}
+            {site.address.postalCode}
+          </span>
+        </li>
+        <li class="flex gap-3">
+          <Icon name="clock" class="w-5 h-5 text-brand-400 shrink-0" />
+          <span>
+            {site.hours.map((h) => (
+              <span class="block">{h.days}: {h.time}</span>
+            ))}
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div
+      class="container-x py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink-500"
+    >
+      <p>&copy; {year} {site.legalName}. All rights reserved.</p>
+      <p>Licensed · Bonded · Insured · Serving {site.address.city}, {site.address.region}</p>
+    </div>
+  </div>
+</footer>

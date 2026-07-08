@@ -1,0 +1,179 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../data/site";
+import { services } from "../data/services";
+
+const title = "Contact Us | Free Roofing Estimate in Chattanooga, TN";
+const description = `Contact Dependable Roofing Pros for a free roofing estimate in Chattanooga, TN. Call ${site.phone} or request a quote online. Fast, friendly, no-obligation service.`;
+
+const contactPoints = [
+  { icon: "phone", label: "Call Us", value: site.phone, href: site.phoneHref },
+  { icon: "mail", label: "Email Us", value: site.email, href: `mailto:${site.email}` },
+  {
+    icon: "pin",
+    label: "Visit Us",
+    value: `${site.address.street}, ${site.address.city}, ${site.address.region} ${site.address.postalCode}`,
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path="/contact">
+  <PageHero
+    eyebrow="Free, No-Obligation Estimates"
+    title="Let's Talk About Your Roof"
+    subtitle="Call us or fill out the form below and our team will get back to you within one business day. We're happy to answer any questions."
+    crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
+  />
+
+  <section class="py-20">
+    <div class="container-x grid lg:grid-cols-5 gap-12">
+      <!-- Contact info -->
+      <div class="lg:col-span-2 space-y-6">
+        {
+          contactPoints.map((c) => (
+            <div class="flex gap-4 items-start bg-ink-50 rounded-2xl p-6 border border-ink-100">
+              <span class="grid place-items-center w-12 h-12 shrink-0 rounded-xl bg-brand-600 text-white">
+                <Icon name={c.icon} class="w-6 h-6" />
+              </span>
+              <div>
+                <div class="text-sm font-semibold text-ink-500 uppercase tracking-wide">
+                  {c.label}
+                </div>
+                {c.href ? (
+                  <a
+                    href={c.href}
+                    class="mt-1 block font-display text-lg font-bold text-ink-900 hover:text-brand-600 break-words"
+                  >
+                    {c.value}
+                  </a>
+                ) : (
+                  <div class="mt-1 font-display text-lg font-bold text-ink-900">
+                    {c.value}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))
+        }
+
+        <div class="bg-ink-950 text-white rounded-2xl p-6">
+          <h3 class="flex items-center gap-2 font-display text-lg font-bold">
+            <Icon name="clock" class="w-5 h-5 text-brand-400" /> Business Hours
+          </h3>
+          <ul class="mt-4 space-y-2 text-ink-300">
+            {
+              site.hours.map((h) => (
+                <li class="flex justify-between gap-4">
+                  <span>{h.days}</span>
+                  <span class="text-white font-medium text-right">{h.time}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="lg:col-span-3">
+        <div class="rounded-2xl border border-ink-100 shadow-lg p-7 sm:p-9">
+          <h2 class="font-display text-2xl font-extrabold text-ink-900">
+            Request Your Free Estimate
+          </h2>
+          <p class="mt-2 text-ink-500">
+            Tell us a little about your project and we'll be in touch shortly.
+          </p>
+          <form
+            class="mt-6 space-y-4"
+            action={`https://formsubmit.co/${site.email}`}
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="New estimate request from website" />
+            <input type="hidden" name="_template" value="table" />
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-semibold text-ink-700 mb-1.5" for="name">
+                  Full name *
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full rounded-lg border border-ink-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-ink-700 mb-1.5" for="phone">
+                  Phone *
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  class="w-full rounded-lg border border-ink-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                />
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-semibold text-ink-700 mb-1.5" for="email">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  class="w-full rounded-lg border border-ink-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-ink-700 mb-1.5" for="service">
+                  Service needed
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  class="w-full rounded-lg border border-ink-200 px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500"
+                >
+                  <option value="">Select…</option>
+                  {services.map((s) => <option value={s.title}>{s.title}</option>)}
+                  <option value="Other">Other / Not sure</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-ink-700 mb-1.5" for="address">
+                Property address
+              </label>
+              <input
+                id="address"
+                name="address"
+                class="w-full rounded-lg border border-ink-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-ink-700 mb-1.5" for="message">
+                How can we help?
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="w-full rounded-lg border border-ink-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-full text-base">
+              Send My Request <Icon name="arrow" class="w-5 h-5" />
+            </button>
+            <p class="text-xs text-ink-400 text-center">
+              By submitting, you agree to be contacted about your project. We
+              never share your information.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
